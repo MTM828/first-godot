@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://items/weapons/light_machine_gun/light_machine_gun_shoot1.png" type="Texture" id=1]
+[ext_resource path="res://items/weapons/light_machine_gun/light_machine_gun_shoot3.png" type="Texture" id=2]
+[ext_resource path="res://items/weapons/light_machine_gun/LightMachineGun.gd" type="Script" id=3]
+[ext_resource path="res://items/weapons/light_machine_gun/light_machine_gun_shoot2.png" type="Texture" id=4]
+[ext_resource path="res://items/weapons/light_machine_gun/light_machine_gun.png" type="Texture" id=5]
+[ext_resource path="res://items/weapons/light_machine_gun/light_machine_gun_shoot4.png" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "use",
+"speed": 30.0
+} ]
+
+[node name="LightMachineGun" type="Position2D"]
+script = ExtResource( 3 )
+
+[node name="Animation" type="AnimatedSprite" parent="."]
+position = Vector2( 5, 1 )
+frames = SubResource( 1 )
+animation = "use"
+
+[node name="ShootCooldown" type="Timer" parent="."]
+autostart = true
+
+[node name="BulletStart" type="Position2D" parent="."]
+position = Vector2( 9, 0.5 )
